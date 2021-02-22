@@ -1,4 +1,5 @@
 import React from "react";
+import { format } from "date-fns";
 
 export default function Timeline({ resources }) {
   return (
@@ -47,7 +48,8 @@ export default function Timeline({ resources }) {
                             </p>
                           </div>
                           <div className="text-right text-sm whitespace-nowrap text-gray-500">
-                            <time dateTime="2020-09-20">{resource.date}</time>
+                            {/* <time dateTime="2020-09-20">{resource.date}</time> */}
+                            <div>{format(resource.date, "MM/dd/yyyy")}</div>
                           </div>
                         </div>
                       </div>

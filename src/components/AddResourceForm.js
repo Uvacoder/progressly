@@ -22,7 +22,6 @@ export default function AddResourceForm({ resources }) {
   const submit = (e) => {
     e.preventDefault();
     console.log("submitting data", formData);
-    console.log("to userid:", user.uid);
 
     const updatedResources = [];
 
@@ -35,7 +34,7 @@ export default function AddResourceForm({ resources }) {
       date: Date.now(),
     });
 
-    db.ref("users/" + user.uid).set({
+    db.ref("users/" + user.displayName).set({
       resources: updatedResources,
     });
 
