@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../src/authProvider";
 import AddResourceForm from "../src/components/AddResourceForm";
-import AuthGate from "../src/components/AuthGate";
+import SignInForm from "../src/components/SignInForm";
 import ProfileInfo from "../src/components/ProfileInfo";
 import Timeline from "../src/components/Timeline";
-// import FirebaseAuth from "../src/firebaseAuth";
 import { db } from "../src/initFirebase";
 
 export default function MyProfile() {
@@ -15,13 +14,14 @@ export default function MyProfile() {
     if (user) {
       const ref = db.ref("users/" + user.displayName);
       ref.on("value", (snapshot) => {
+        console.log("profile snapshot val", snapshot.val());
         setTempUserData(snapshot.val());
       });
       return () => ref.off();
     }
   }, [user]);
   if (loading) return null; // TODO add spinner here
-  if (!user) return <AuthGate />;
+  if (!user) return <SignInForm />;
   return (
     <div className="flex-1 relative z-0 flex overflow-hidden">
       <main
