@@ -6,6 +6,7 @@ const AuthContext = createContext({
   loading: true,
   signin: () => {},
   signout: () => {},
+  signup: () => {},
 });
 
 const AuthProvider = ({ children }) => {
@@ -29,6 +30,18 @@ const AuthProvider = ({ children }) => {
         setUser(null);
       });
   };
+
+  const signup = (email, password) => {
+    return firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((response) => {
+        console.log("signing up with email", email);
+        console.log("after signup, set user to", response.user);
+        setUser(response.user);
+        return response.user;
+      });
+  };
   useEffect(() => {
     const cancelAuthListener = firebase.auth().onIdTokenChanged((u) => {
       setUser(u);
@@ -39,7 +52,7 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, loading, signin, signout }}>
+    <AuthContext.Provider value={{ user, loading, signin, signout, signup }}>
       {children}
     </AuthContext.Provider>
   );
