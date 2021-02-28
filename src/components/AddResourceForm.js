@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../authProvider";
 import { db } from "../initFirebase";
+import { v4 as uuidv4 } from "uuid";
 
 const defaultState = {
   name: "",
@@ -30,8 +31,9 @@ export default function AddResourceForm({ resources }) {
     }
 
     updatedResources.push({
-      ...formData,
+      id: uuidv4(),
       date: Date.now(),
+      ...formData,
     });
 
     db.ref("users/" + user.displayName).set({
