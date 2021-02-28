@@ -2,6 +2,7 @@ import React from "react";
 import { format } from "date-fns";
 
 export default function Timeline({ resources }) {
+  console.log("rendering timeline", resources);
   return (
     <div>
       {resources && (
@@ -10,8 +11,9 @@ export default function Timeline({ resources }) {
           <div className="max-w-md">
             <div className="flow-root">
               <ul className="-mb-8">
-                {resources.reverse().map((resource) => (
-                  <li>
+                {/* The array is sorted by date, but we want the newest  on top. Resources are spread to avoid mutating the original array */}
+                {[...resources].reverse().map((resource) => (
+                  <li key={resource.date}>
                     <div className="relative pb-8">
                       <span
                         className="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200"
