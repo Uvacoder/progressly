@@ -22,11 +22,7 @@ export default function Home() {
   return (
     <div className="py-6 px-4 sm:px-6 lg:px-8">
       <h1 className="text-5xl font-bold">Explore other profiles</h1>{" "}
-      {users.length > 0 ? (
-        <ProfileGrid profiles={users} />
-      ) : (
-        <div>No users found!</div>
-      )}
+      {users.length > 0 ? <ProfileGrid profiles={users} /> : null}
     </div>
   );
 }
