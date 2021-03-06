@@ -16,11 +16,12 @@ export default function Layout({ children }) {
           <div className="flex flex-col h-0 flex-1 border-r border-gray-200 bg-gray-100">
             <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
               <div className="flex items-center flex-shrink-0 px-4">
-                <img
+                {/* <img
                   className="h-8 w-auto"
                   src="https://tailwindui.com/img/logos/workflow-logo-indigo-600-mark-gray-900-text.svg"
                   alt="Workflow"
-                />
+                /> */}
+                <p className="text-2xl font-bold">Progressly</p>
               </div>
               <nav className="mt-5 flex-1" aria-label="Sidebar">
                 <div className="px-2 space-y-1">

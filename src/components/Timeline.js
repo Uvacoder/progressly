@@ -42,6 +42,8 @@ export default function Timeline({ resources }) {
                             <p className="text-sm text-gray-500">
                               Finished{" "}
                               <a
+                                rel="noreferrer noopener"
+                                target="_blank"
                                 href={resource.url}
                                 className="font-medium text-gray-900"
                               >

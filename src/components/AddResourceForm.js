@@ -36,7 +36,7 @@ export default function AddResourceForm({ resources }) {
       ...formData,
     });
 
-    db.ref("users/" + user.displayName).set({
+    db.ref("users/" + user.displayName).update({
       resources: updatedResources,
     });
 
