@@ -20,6 +20,7 @@ export default function MyProfile() {
       return () => ref.off();
     }
   }, [user]);
+  console.log("user: in profile", tempUserData);
   if (loading) return null; // TODO add spinner here
   if (!user) return <SignInForm />;
   return (
@@ -30,7 +31,7 @@ export default function MyProfile() {
       >
         <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
           <div className="h-full border-2 border-gray-200 border-dashed rounded-lg">
-            <ProfileInfo {...user} />
+            <ProfileInfo {...tempUserData} />
             <AddResourceForm resources={tempUserData?.resources} />
           </div>
         </div>

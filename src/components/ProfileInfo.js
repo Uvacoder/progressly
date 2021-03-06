@@ -1,11 +1,14 @@
 import React from "react";
 import { useAuth } from "../authProvider";
-export default function ProfileInfo() {
-  const { user } = useAuth();
+import ProfileTags from "./ProfileTags";
+export default function ProfileInfo({ displayName, email, tags }) {
+  console.log("tags:", tags);
+  // const { user } = useAuth();
   return (
     <div>
-      <h1 className="text-5xl font-bold">Hello {user.displayName}!</h1> Your
-      email is {user.email}!
+      <h1 className="text-5xl font-bold">Hello {displayName}!</h1> Your email is{" "}
+      {email}!
+      <ProfileTags existingTags={tags} />
     </div>
   );
 }
