@@ -52,17 +52,20 @@ export default function ProfileTags() {
       if (val.tag.toLowerCase() === tag.toLowerCase()) return;
     }
 
-    const tagRef = db.ref("tags").push({
+    const newTag = {
       tag,
       displayName: user.displayName,
-    });
-    await db.ref(`users/${user.displayName}/tags/${tagRef.key}`).set(true);
+    };
+
+    const tagRef = db.ref("tags").push(newTag);
+    await db.ref(`users/${user.displayName}/tags/${tagRef.key}`).set(tag);
     return setTag("");
   };
   return (
     <div>
       <ul>
         {Object.entries(tags).map(([id, tag]) => {
+          console.log("tags:", tags);
           return (
             <Badge key={id} id={id} name={tag.tag} removeTag={removeTag} />
           );

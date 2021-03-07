@@ -20,7 +20,11 @@ const ProfileCard = ({ displayName, tags }) => {
     >
       <p className="text-2xl font-bold">{displayName}</p>
       {tags &&
-        Object.entries(tags).map(([id, tag]) => <div key={id}>{tag.name}</div>)}
+        Object.entries(tags).map(([id, tag]) => (
+          <div key={id}>
+            {id}, {tag}
+          </div>
+        ))}
     </LinkTo>
   );
 };
