@@ -14,7 +14,8 @@ export default function MyProfile() {
     if (user) {
       const ref = db.ref("users/" + user.displayName);
       ref.on("value", (snapshot) => {
-        console.log("profile snapshot val", snapshot.val());
+        const value = snapshot.val();
+        console.log("profile snapshot val", value);
         setTempUserData(snapshot.val());
       });
       return () => ref.off();
@@ -31,7 +32,7 @@ export default function MyProfile() {
       >
         <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
           <div className="h-full border-2 border-gray-200 border-dashed rounded-lg">
-            <ProfileInfo {...tempUserData} />
+            <ProfileInfo {...user} />
             <AddResourceForm resources={tempUserData?.resources} />
           </div>
         </div>
