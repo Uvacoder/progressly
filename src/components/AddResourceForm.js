@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useAuth } from "../authProvider";
 import { db } from "../initFirebase";
 import { v4 as uuidv4 } from "uuid";
-
+import Input from "../components/ui/Input";
 const defaultState = {
   name: "",
   description: "",
@@ -24,21 +24,12 @@ export default function AddResourceForm({ resources }) {
     e.preventDefault();
     console.log("submitting data", formData);
 
-    const updatedResources = [];
-
-    if (resources) {
-      resources.forEach((resource) => updatedResources.push(resource));
-    }
-
-    updatedResources.push({
+    const newResource = {
       id: uuidv4(),
       date: Date.now(),
       ...formData,
-    });
-
-    db.ref("users/" + user.displayName).update({
-      resources: updatedResources,
-    });
+    };
+    db.ref(`users/${user.displayName}/resources`).push(newResource);
 
     setFormData(defaultState);
   };
@@ -52,14 +43,13 @@ export default function AddResourceForm({ resources }) {
           Name
         </label>
         <div className="mt-1">
-          <input
-            value={formData.name}
-            onChange={inputChange}
+          <Input
+            placeholder="The Web Developer Bootcamp 2021"
             type="text"
             name="name"
             id="name"
-            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-            placeholder="The Web Developer Bootcamp 2021"
+            value={formData.name}
+            onChange={inputChange}
           />
         </div>
         <label
@@ -75,7 +65,7 @@ export default function AddResourceForm({ resources }) {
             type="text"
             name="url"
             id="url"
-            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+            className="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md"
             placeholder="https://udemy.com/whatever"
           />
         </div>
@@ -92,13 +82,13 @@ export default function AddResourceForm({ resources }) {
             type="text"
             name="description"
             id="description"
-            className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+            className="shadow-sm focus:ring-green-500 focus:border-green-500 block w-full sm:text-sm border-gray-300 rounded-md"
             placeholder="This was a great course"
           />
         </div>
         <button
           type="submit"
-          className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mt-4"
+          className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-green-500 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 mt-4"
         >
           Add Resource
         </button>
