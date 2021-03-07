@@ -11,14 +11,16 @@ export default function ProfileGrid({ profiles }) {
   );
 }
 
-const ProfileCard = ({ displayName, resources }) => (
-  <LinkTo
-    to={`/profile/${displayName}`}
-    className="bg-white rounded-lg shadow-2xl p-4"
-  >
-    <p className="text-2xl font-bold">{displayName}</p>
-    {resources.map((resource, index) => (
-      <div key={index}>{resource.name}</div>
-    ))}
-  </LinkTo>
-);
+const ProfileCard = ({ displayName, tags }) => {
+  console.log("tags:", tags);
+  return (
+    <LinkTo
+      to={`/profile/${displayName}`}
+      className="bg-white rounded-lg shadow-2xl p-4"
+    >
+      <p className="text-2xl font-bold">{displayName}</p>
+      {tags &&
+        Object.entries(tags).map(([id, tag]) => <div key={id}>{tag.name}</div>)}
+    </LinkTo>
+  );
+};
