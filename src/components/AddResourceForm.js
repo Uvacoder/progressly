@@ -34,7 +34,7 @@ export default function AddResourceForm({ resources }) {
     setFormData(defaultState);
   };
   return (
-    <div className="max-w-sm">
+    <div className="max-w-sm w-full shadow-2xl bg-white rounded-lg p-8 mt-8">
       <form onSubmit={submit}>
         <label
           htmlFor="name"

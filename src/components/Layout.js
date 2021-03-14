@@ -8,7 +8,7 @@ export default function Layout({ children }) {
   const pathname = router.pathname;
   console.log("user in LAYOUT:", user);
   return (
-    <div className="h-screen flex overflow-hidden bg-white">
+    <div className="h-screen flex overflow-hidden bg-gray-100">
       {/* <!-- Static sidebar for desktop --> */}
       <div className="hidden lg:flex lg:flex-shrink-0">
         <div className="flex flex-col w-64">

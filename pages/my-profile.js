@@ -31,15 +31,15 @@ export default function MyProfile() {
         tabIndex="0"
       >
         <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-          <div className="h-full border-2 border-gray-200 border-dashed rounded-lg">
-            <ProfileInfo {...user} />
+          <div className="border-2 p-6 h-full border-gray-200 border-dashed rounded-lg">
+            <ProfileInfo />
             <AddResourceForm resources={tempUserData?.resources} />
           </div>
         </div>
       </main>
-      <aside className="hidden relative xl:flex xl:flex-col flex-shrink-0 w-96 border-l border-gray-200">
+      <aside className="hidden relative xl:flex xl:flex-col flex-shrink-0 w-1/3 border-l border-gray-200">
         <div className="absolute inset-0 py-6 px-4 sm:px-6 lg:px-8">
-          <div className="h-full border-2 border-gray-200 border-dashed rounded-lg">
+          <div className="h-full border-2 border-gray-200 border-dashed rounded-lg p-6">
             {" "}
             <Timeline resources={tempUserData?.resources} />
           </div>

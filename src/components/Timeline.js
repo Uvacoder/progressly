@@ -4,9 +4,9 @@ import { format } from "date-fns";
 export default function Timeline({ resources }) {
   console.log("rendering timeline", resources);
   return (
-    <div>
+    <div className="p-8 bg-white rounded-lg shadow-2xl">
       {resources && (
-        <div>
+        <div className="">
           <h3 className="font-bold text-2xl mb-4">Timeline</h3>
           <div className="max-w-md">
             <div className="flow-root">
