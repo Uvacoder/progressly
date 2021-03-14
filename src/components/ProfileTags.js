@@ -62,7 +62,15 @@ export default function ProfileTags() {
     return setTag("");
   };
   return (
-    <div>
+    <div className="w-1/3 ml-4">
+      <form className="w-full my-2" onSubmit={onSubmitTag}>
+        <Input
+          type="text"
+          value={tag}
+          placeholder="Add your main interest areas (maximum of 5)"
+          onChange={(e) => setTag(e.target.value)}
+        />
+      </form>
       <ul>
         {Object.entries(tags).map(([id, tag]) => {
           console.log("tags:", tags);
@@ -70,14 +78,6 @@ export default function ProfileTags() {
             <Badge key={id} id={id} name={tag.tag} removeTag={removeTag} />
           );
         })}
-        <form className="max-w-xs my-4" onSubmit={onSubmitTag}>
-          <Input
-            type="text"
-            value={tag}
-            placeholder="Add your main interest areas (maximum of 5)"
-            onChange={(e) => setTag(e.target.value)}
-          />
-        </form>
       </ul>
     </div>
   );
